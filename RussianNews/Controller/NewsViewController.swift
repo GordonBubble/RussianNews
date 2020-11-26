@@ -11,24 +11,22 @@ import UIKit
 class NewsViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    
     var articles: [Article] = []
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         fetchData()
         
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        
+        
     }
     
-    
     func fetchData() {
-        
         guard let url = URL(string: "https://newsapi.org/v2/top-headlines?country=ru&apiKey=634fdd817c474e29933845a53e712d45") else { return }
         
         let urlRequest = URLRequest(url: url)
@@ -38,50 +36,31 @@ class NewsViewController: UIViewController {
             
             guard let data = data else { return }
             
-            self.articles = [Article]()
+           // self.articles = [Article]()
+            
             do {
+                let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : AnyObject]
+                let articlesFromJson = json!["articles"] as! [[String : AnyObject]]
                 
-                let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String : AnyObject]
-                
-                
-                if let articlesFromJson = json["articles"] as? [[String : AnyObject]] {
-                    for articlesJson in articlesFromJson {
-                        var article = Article()
-                        if let title = articlesJson["title"] as? String,
-                            let imageToUrl = articlesJson["urlToImage"] as? String,
-                            let publishedAt = articlesJson["publishedAt"] as? String,
-                        let desc = articlesJson["description"] as? String {
-                            
-                            article.headLine = title
-                            article.imageUrl = imageToUrl
-                            article.publishedAt = publishedAt
-                            article.desc = desc
-                           // print(desc)
-                            
-                        }
-                        self.articles.append(article)
-                    }
+                for dictionary in articlesFromJson {
+                    let newArticle = Article(dictionary: dictionary)
+                    self.articles.append(newArticle!)
                 }
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
-                
-            } catch {
-                print(error)
             }
         }
         task.resume()
     }
-    
-    
-  private func configureCell(cell: CollectionViewCell, for indexPath: IndexPath) {
+   private func configureCell(cell: CollectionViewCell, for indexPath: IndexPath) {
         
-    let news = articles[indexPath.row]
+        let news = articles[indexPath.row]
         cell.titleLabel.text = news.headLine
         cell.dateLabel.text = news.publishedAt
         
         DispatchQueue.global().async {
-            guard let imageUrl = URL(string: news.imageUrl!) else { return }
+            guard let imageUrl = URL(string: news.imageUrl ?? "Error") else { return }
             guard let imageData = try? Data(contentsOf: imageUrl) else { return }
             DispatchQueue.main.async {
                 cell.newsImage.image = UIImage(data: imageData)
@@ -89,9 +68,7 @@ class NewsViewController: UIViewController {
         }
     }
     
-
 }
-
 
 extension NewsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -101,12 +78,12 @@ extension NewsViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
-        
         configureCell(cell: cell, for: indexPath)
+    
         
         return cell
     }
-
+    
     //size cells
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 390, height: 390)
@@ -120,10 +97,10 @@ extension NewsViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let news = self.articles[indexPath.row]
         
-       let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "TextViewController") as! TextViewController
-       self.navigationController?.pushViewController(vc, animated: true)
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "TextViewController") as! TextViewController
+        self.navigationController?.pushViewController(vc, animated: true)
         
-        vc.text = news.desc!
+        vc.text = news.desc ?? ""
     }
 }
 

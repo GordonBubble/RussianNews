@@ -33,7 +33,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="390"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="odh-wt-xHB">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="odh-wt-xHB">
                                                     <rect key="frame" x="0.0" y="0.0" width="390" height="250"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="250" id="tpC-Vz-UY7"/>

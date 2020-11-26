@@ -16,7 +16,6 @@ class TextViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         textView.text = text
     }
 }

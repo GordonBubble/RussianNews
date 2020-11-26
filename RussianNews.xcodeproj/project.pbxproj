@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		93846DA025647F0D00B85E81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93846D9F25647F0D00B85E81 /* AppDelegate.swift */; };
 		93846DA225647F0D00B85E81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93846DA125647F0D00B85E81 /* SceneDelegate.swift */; };
-		93846DA425647F0D00B85E81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93846DA325647F0D00B85E81 /* ViewController.swift */; };
 		93846DA725647F0D00B85E81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93846DA525647F0D00B85E81 /* Main.storyboard */; };
 		93846DA925647F1200B85E81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93846DA825647F1200B85E81 /* Assets.xcassets */; };
 		93846DAC25647F1200B85E81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93846DAA25647F1200B85E81 /* LaunchScreen.storyboard */; };
+		93846DB62564807000B85E81 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93846DB52564807000B85E81 /* NewsModel.swift */; };
+		93846DB82564827000B85E81 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93846DB72564827000B85E81 /* NewsViewController.swift */; };
+		93D4712F25670ABC0086C2CF /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D4712D25670ABC0086C2CF /* CollectionViewCell.swift */; };
+		93D471322569B5D70086C2CF /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D471312569B5D70086C2CF /* TextViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		93846D9C25647F0D00B85E81 /* RussianNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RussianNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93846D9F25647F0D00B85E81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93846DA125647F0D00B85E81 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		93846DA325647F0D00B85E81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		93846DA625647F0D00B85E81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93846DA825647F1200B85E81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93846DAB25647F1200B85E81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93846DAD25647F1200B85E81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93846DB52564807000B85E81 /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		93846DB72564827000B85E81 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		93D4712D25670ABC0086C2CF /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		93D471312569B5D70086C2CF /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,50 @@
 		93846D9E25647F0D00B85E81 /* RussianNews */ = {
 			isa = PBXGroup;
 			children = (
-				93846D9F25647F0D00B85E81 /* AppDelegate.swift */,
-				93846DA125647F0D00B85E81 /* SceneDelegate.swift */,
-				93846DA325647F0D00B85E81 /* ViewController.swift */,
-				93846DA525647F0D00B85E81 /* Main.storyboard */,
-				93846DA825647F1200B85E81 /* Assets.xcassets */,
-				93846DAA25647F1200B85E81 /* LaunchScreen.storyboard */,
 				93846DAD25647F1200B85E81 /* Info.plist */,
+				93846DA825647F1200B85E81 /* Assets.xcassets */,
+				93D47134256BA6660086C2CF /* Controller */,
+				93D47133256BA6580086C2CF /* Model */,
+				93D47135256BA6770086C2CF /* View */,
+				93D47136256BA6A20086C2CF /* Helpers */,
 			);
 			path = RussianNews;
+			sourceTree = "<group>";
+		};
+		93D47133256BA6580086C2CF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				93846DB52564807000B85E81 /* NewsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		93D47134256BA6660086C2CF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				93846DA125647F0D00B85E81 /* SceneDelegate.swift */,
+				93846D9F25647F0D00B85E81 /* AppDelegate.swift */,
+				93846DB72564827000B85E81 /* NewsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		93D47135256BA6770086C2CF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				93D471312569B5D70086C2CF /* TextViewController.swift */,
+				93D4712D25670ABC0086C2CF /* CollectionViewCell.swift */,
+				93846DA525647F0D00B85E81 /* Main.storyboard */,
+				93846DAA25647F1200B85E81 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		93D47136256BA6A20086C2CF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +179,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93846DA425647F0D00B85E81 /* ViewController.swift in Sources */,
+				93D4712F25670ABC0086C2CF /* CollectionViewCell.swift in Sources */,
+				93846DB62564807000B85E81 /* NewsModel.swift in Sources */,
 				93846DA025647F0D00B85E81 /* AppDelegate.swift in Sources */,
 				93846DA225647F0D00B85E81 /* SceneDelegate.swift in Sources */,
+				93846DB82564827000B85E81 /* NewsViewController.swift in Sources */,
+				93D471322569B5D70086C2CF /* TextViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +329,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 55ACGNRYM5;
 				INFOPLIST_FILE = RussianNews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -302,6 +348,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 55ACGNRYM5;
 				INFOPLIST_FILE = RussianNews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
